@@ -1,7 +1,7 @@
 import asyncio
 from datetime import datetime
 import random
-import telebot
+
 
 
 from aiogram import F, Bot, Dispatcher
@@ -33,6 +33,7 @@ async def help_cmd(message: Message):
         "/help - help\n"
         "/time - current time\n"
         "/game - start a game\n"
+        "Profile - check a profile\n"
     )
 
 
@@ -61,22 +62,16 @@ async def profile(message: Message):
 async def on_hi(message: Message):
     await message.reply(f"Hello {message.from_user.username}, how are you?")
 
+@dp.message(Command("game"))
+async def coin_flip(message: Message):
+    result = random.choice(["Heads", "Tails"])
+    await message.answer(f'The coin was flipped... The result was: **{result}**!"')
 
 @dp.message()
 async def on_message(message: Message):
     await message.answer(
         message.text.upper(),
     )
-
-
-
-
-
-
-
-
-
-
 
 
 async def main():
