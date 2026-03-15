@@ -1,5 +1,8 @@
 import asyncio
 from datetime import datetime
+import random
+import telebot
+
 
 from aiogram import F, Bot, Dispatcher
 from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
@@ -29,6 +32,7 @@ async def help_cmd(message: Message):
         "/start - start the bot\n"
         "/help - help\n"
         "/time - current time\n"
+        "/game - start a game\n"
     )
 
 
@@ -63,6 +67,15 @@ async def on_message(message: Message):
     await message.answer(
         message.text.upper(),
     )
+
+
+
+
+
+
+
+
+
 
 
 
